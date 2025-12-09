@@ -6,6 +6,7 @@
 ![React](https://img.shields.io/badge/frontend-React-61DBFB?logo=react)
 ![Cloudflare](https://img.shields.io/badge/LLM-Cloudflare%20Workers%20AI-orange?logo=cloudflare)
 ![Clustering](https://img.shields.io/badge/Clustering-UMAP%20%2B%20HDBSCAN-purple)
+[![API Docs](https://img.shields.io/badge/API_DOCS-Available-blue)](https://github.com/CharlieSierra1/mq-apate-2025-team35/blob/varun/cluster_Backend/backend/APIDOC.md)
 
 ---
 
@@ -14,26 +15,42 @@
 The **Scam Email Intelligence Dashboard** is an end-to-end AI system that:
 
 ### 🔍 **1. Clusters emails automatically**  
-Using **SentenceTransformer → UMAP → HDBSCAN**, the system groups similar emails into clusters based on semantic similarity.
+Powered by **SentenceTransformer → UMAP → HDBSCAN**, the system groups semantically similar emails — perfect for SOC analysts, cyber fraud teams, and research.
 
 ### 🤖 **2. Detects scam archetypes using Cloudflare Workers AI**  
-Each email is classified into patterns such as *Financial Scam, Government Scam, Tax Fraud, Legal Threat*, etc.
+Emails are labeled as *Financial Fraud, Legal Threat, Government Scam, Tax Scam*, etc., with risk scoring and confidence levels.
 
-### 🧠 **3. Provides a SOC-style Analyst Dashboard**  
-With filters, risk scoring, pagination, and cluster insights — analysts can rapidly inspect suspicious messages.
+### 🧠 **3. Provides a SOC-grade Analyst Dashboard**  
+Filters, pagination, scam highlighting, clustering insights — all included in a clean React + Tailwind interface.
 
-### 📊 **4. Displays risk scores, archetypes & scam confidence**  
-Every email is enriched with metadata such as:  
+### 📊 **4. Returns enriched metadata**  
+Each email comes with:
+- scam/not scam  
+- archetype  
 - risk score  
-- scam / not scam  
-- confidence (%)  
-- archetype label  
+- confidence  
 - cluster ID  
-
-This project is built for **hackathons, security teams, AI learning, and fraud-detection demos**.
+- sender/receiver processing  
+- UMAP coordinates  
 
 ---
 
-# 🖼️ UI Preview
+# 🔗 **API Documentation**
 
-> *(Insert screenshots here)*  
+📘 **Full API Documentation:**  
+👉 https://github.com/CharlieSierra1/mq-apate-2025-team35/blob/varun/cluster_Backend/backend/APIDOC.md
+
+This includes:
+- Endpoint descriptions  
+- Request/Response formats  
+- Example curl commands  
+- Error handling  
+- Cloudflare AI integration details  
+
+---
+
+# 🏗️ System Architecture
+
+Here is the full pipeline visual:
+
+![Architecture Diagram](./arch.png)
