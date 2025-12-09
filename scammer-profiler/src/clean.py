@@ -12,3 +12,4 @@ def scrub(text):
 def filter_lang(df, lang='en'):
     mask = df['text'].fillna('').apply(lambda t: (detect(t) if t else 'unknown')==lang)
     return df[mask]
+
