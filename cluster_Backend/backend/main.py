@@ -41,6 +41,11 @@ async def process_file(files: list[UploadFile] = File(...)):
         print("Merging...")
         final = df_clustered.merge(cf_df, on="id", how="left")
 
+        # 🔥 FIX JSON ENCODING ISSUES
+        print("Cleaning NaN / infinite values...")
+        final = final.replace([float('inf'), float('-inf')], None)
+        final = final.where(pd.notnull(final), None)
+        
         # 4) Return JSON
         return JSONResponse(
             content={

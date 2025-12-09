@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import "./App.css";
+import "tailwindcss";
 
 type Status = "idle" | "processing" | "done" | "error";
 
@@ -9,6 +10,16 @@ export default function App() {
   const [message, setMessage] = useState("");
   const [results, setResults] = useState<any[] | null>(null);
   const [meta, setMeta] = useState<any | null>(null);
+
+  // === Filters ===
+  const [filterCluster, setFilterCluster] = useState<string>("all");
+  const [filterArchetype, setFilterArchetype] = useState<string>("all");
+  const [showScamsOnly, setShowScamsOnly] = useState<boolean>(false);
+  const [riskLimit, setRiskLimit] = useState<number>(100);
+
+  // === PAGINATION ===
+  const [page, setPage] = useState<number>(1);
+  const [pageSize, setPageSize] = useState<number>(12);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFiles(e.target.files);
@@ -40,139 +51,298 @@ export default function App() {
       });
 
       const json = await res.json();
-      console.log("RESULT:", json);
-
       if (!res.ok) throw new Error(json.error || "Server error");
 
       setMeta(json.meta);
       setResults(json.data);
       setStatus("done");
       setMessage("🎉 Processing complete!");
+
+      setPage(1); // reset page
     } catch (err: any) {
+      console.error(err);
       setStatus("error");
       setMessage("❌ " + (err?.message || "Something went wrong."));
     }
   };
 
-  return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white p-8">
-      {/* HEADER */}
-      <header className="text-center mb-10">
-        <h1 className="text-5xl font-extrabold mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg">
-          Email Intelligence Dashboard
-        </h1>
-        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-          Upload your dataset and automatically uncover clusters, patterns, scam
-          archetypes, and behavioural signals using <strong>AI + ML</strong>.
-        </p>
-      </header>
+  // === FILTERED RESULTS ===
+  const filtered = useMemo(() => {
+    if (!results) return [];
+    return results.filter((email) => {
+      if (filterCluster !== "all" && email.cluster !== Number(filterCluster))
+        return false;
+      if (filterArchetype !== "all" && email.cf_archetype !== filterArchetype)
+        return false;
+      if (showScamsOnly && !email.cf_is_scam) return false;
+      if (email.cf_risk > riskLimit) return false;
+      return true;
+    });
+  }, [results, filterCluster, filterArchetype, showScamsOnly, riskLimit]);
 
-      {/* Upload Card */}
-      <div className="flex justify-center mb-8">
-        <form
-          onSubmit={handleSubmit}
-          className="backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl p-8 rounded-2xl w-full max-w-xl transition"
-        >
-          <label className="block mb-6">
-            <span className="text-gray-200 font-semibold">Upload CSV File</span>
+  // === PAGINATION SLICE ===
+  const totalPages = Math.ceil(filtered.length / pageSize);
+  const pageData = filtered.slice((page - 1) * pageSize, page * pageSize);
+
+  return (
+    <main
+      className="min-h-screen w-full 
+      bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]
+      text-white p-8"
+    >
+      {/* HEADER */}
+      <h1 className="text-5xl font-extrabold mb-3 text-center drop-shadow-lg">
+        🔍 Scam Email Intelligence Dashboard
+      </h1>
+      <p className="text-gray-300 text-center mb-10 text-lg">
+        AI-powered clustering, scam detection & analyst tooling.
+      </p>
+
+      {/* UPLOAD SECTION */}
+      <div
+        className="max-w-xl mx-auto 
+        bg-white/10 backdrop-blur-xl 
+        border border-white/20 
+        p-8 rounded-2xl shadow-2xl"
+      >
+        <form onSubmit={handleSubmit}>
+          <label className="block mb-4">
+            <span className="text-gray-200 text-lg">Upload CSV File</span>
             <input
               type="file"
               accept=".csv"
               onChange={handleFileChange}
-              className="mt-3 w-full text-white bg-gray-700 rounded-lg p-3 border border-gray-600 focus:ring-2 focus:ring-purple-500"
+              className="mt-3 w-full bg-white/10 p-3 rounded-lg border border-white/20
+                       focus:ring-2 focus:ring-purple-400 outline-none transition"
             />
           </label>
 
           <button
-            type="submit"
+            className={`w-full py-3 rounded-xl font-bold text-lg transition 
+              bg-gradient-to-r from-green-400 to-green-600
+              shadow-lg hover:shadow-green-500/50
+              ${
+                status === "processing"
+                  ? "opacity-50 cursor-wait"
+                  : "hover:scale-[1.02]"
+              }`}
             disabled={!files || status === "processing"}
-            className={`w-full py-3 text-lg rounded-xl font-semibold transition-all ${
-              status === "processing"
-                ? "bg-yellow-500 cursor-wait"
-                : "bg-purple-500 hover:bg-purple-400"
-            }`}
           >
             {status === "processing" ? "Processing…" : "Run Analysis"}
           </button>
         </form>
-      </div>
 
-      {/* Status Message */}
-      {message && (
-        <p
-          className={`text-center text-lg px-5 py-3 rounded-xl max-w-xl mx-auto mb-10 ${
-            status === "error"
-              ? "bg-red-600"
-              : status === "processing"
-              ? "bg-yellow-600"
-              : "bg-green-600"
-          }`}
-        >
-          {message}
-        </p>
-      )}
+        {message && (
+          <p
+            className={`mt-4 text-center p-3 rounded-xl text-lg font-semibold shadow
+            ${
+              status === "error"
+                ? "bg-red-600/80"
+                : status === "processing"
+                ? "bg-yellow-600/80"
+                : "bg-green-600/80"
+            }`}
+          >
+            {message}
+          </p>
+        )}
+      </div>
 
       {/* RESULTS */}
       {status === "done" && results && (
-        <div className="w-full max-w-7xl mx-auto mt-6">
-          {/* SUMMARY CARD */}
-          <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mb-10 shadow-xl">
-            <h2 className="text-3xl font-bold mb-4">📊 Analysis Summary</h2>
-            <div className="flex gap-10 text-lg text-gray-200">
-              <p>
-                Total Emails: <span className="font-semibold">{meta.rows}</span>
-              </p>
-              <p>
-                Total Clusters:{" "}
-                <span className="font-semibold">{meta.clusters}</span>
-              </p>
+        <div className="mt-14 max-w-7xl mx-auto">
+          {/* SUMMARY BOX */}
+          <div
+            className="bg-white/10 backdrop-blur-xl border border-white/20 
+                        p-6 rounded-2xl shadow-xl mb-10"
+          >
+            <h2 className="text-3xl font-bold mb-3">📊 Analysis Summary</h2>
+            <p className="text-lg">
+              Total Emails: <strong>{meta.rows}</strong>
+            </p>
+            <p className="text-lg">
+              Total Clusters: <strong>{meta.clusters}</strong>
+            </p>
+          </div>
+
+          {/* FILTER PANEL */}
+          <div
+            className="bg-white/10 backdrop-blur-xl border border-white/20
+                        p-6 rounded-2xl shadow-xl mb-8 grid md:grid-cols-5 gap-6"
+          >
+            {/* Cluster Filter */}
+            <div>
+              <label className="text-gray-200 font-semibold">Cluster</label>
+              <select
+                className="w-full mt-2 bg-white/10 p-2 rounded-lg border border-white/20 outline-none"
+                value={filterCluster}
+                onChange={(e) => {
+                  setFilterCluster(e.target.value);
+                  setPage(1);
+                }}
+              >
+                <option value="all">All</option>
+                {[...new Set(results.map((e) => e.cluster))].map((c) => (
+                  <option key={c} value={c}>
+                    Cluster {c}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Archetype Filter */}
+            <div>
+              <label className="text-gray-200 font-semibold">Archetype</label>
+              <select
+                className="w-full mt-2 bg-white/10 p-2 rounded-lg border border-white/20 outline-none"
+                value={filterArchetype}
+                onChange={(e) => {
+                  setFilterArchetype(e.target.value);
+                  setPage(1);
+                }}
+              >
+                <option value="all">All</option>
+                {[...new Set(results.map((e) => e.cf_archetype))].map((a) => (
+                  <option key={a} value={a}>
+                    {a}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Risk Slider */}
+            <div>
+              <label className="text-gray-200 font-semibold">
+                Max Risk Score
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={riskLimit}
+                onChange={(e) => {
+                  setRiskLimit(Number(e.target.value));
+                  setPage(1);
+                }}
+                className="w-full mt-3 accent-purple-400"
+              />
+              <div className="text-center text-gray-300">{riskLimit}</div>
+            </div>
+
+            {/* Scam Toggle */}
+            <div className="flex items-center gap-2 mt-9">
+              <input
+                type="checkbox"
+                checked={showScamsOnly}
+                onChange={(e) => {
+                  setShowScamsOnly(e.target.checked);
+                  setPage(1);
+                }}
+                className="w-5 h-5 accent-red-500"
+              />
+              <span className="text-gray-200 font-semibold">Scams only</span>
+            </div>
+
+            {/* Page Size */}
+            <div>
+              <label className="text-gray-200 font-semibold">Page Size</label>
+              <select
+                className="w-full mt-2 bg-white/10 p-2 rounded-lg border border-white/20 outline-none"
+                value={pageSize}
+                onChange={(e) => {
+                  setPageSize(Number(e.target.value));
+                  setPage(1);
+                }}
+              >
+                <option value={6}>6</option>
+                <option value={12}>12</option>
+                <option value={24}>24</option>
+              </select>
             </div>
           </div>
 
-          {/* GRID OF EMAIL CARDS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {results.map((email) => (
+          {/* EMAIL CARDS GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {pageData.map((email) => (
               <div
                 key={email.id}
-                className="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all"
+                className="bg-white/10 backdrop-blur-xl border border-white/10
+                        p-6 rounded-2xl shadow-lg hover:shadow-purple-500/50
+                        hover:-translate-y-1 transition"
               >
+                {/* Header */}
                 <div className="flex justify-between mb-4">
-                  <span className="px-4 py-1 rounded-full text-sm font-bold bg-blue-600/80">
+                  <span
+                    className="px-3 py-1 rounded-lg text-sm font-bold
+                      bg-gradient-to-r from-blue-500 to-purple-600 shadow"
+                  >
                     Cluster {email.cluster}
                   </span>
 
                   <span
-                    className={`px-4 py-1 rounded-full text-sm font-bold ${
-                      email.cf_risk > 70
-                        ? "bg-red-600/80"
-                        : email.cf_risk > 40
-                        ? "bg-yellow-600/80"
-                        : "bg-green-600/80"
-                    }`}
+                    className={`px-3 py-1 rounded-lg text-sm font-bold shadow 
+                  ${
+                    email.cf_risk > 70
+                      ? "bg-red-600"
+                      : email.cf_risk > 40
+                      ? "bg-yellow-600"
+                      : "bg-green-600"
+                  }`}
                   >
                     Risk {email.cf_risk}
                   </span>
                 </div>
 
+                {/* Subject */}
                 <h3 className="text-xl font-bold mb-2">
                   {email.subject || "(No Subject)"}
                 </h3>
 
-                <p className="text-sm mb-2 text-purple-300 font-semibold">
-                  🧠 {email.cf_archetype}
+                {/* Archetype */}
+                <p className="text-sm text-purple-300 mb-3">
+                  🧠 <strong>{email.cf_archetype}</strong>
                 </p>
 
+                {/* Body Preview */}
                 <p className="text-gray-300 text-sm mb-4">
-                  {(email.body || "").slice(0, 180)}…
+                  {(email.body || "").slice(0, 200)}…
                 </p>
 
+                {/* Scam Label */}
                 {email.cf_is_scam && (
-                  <span className="inline-block mt-2 px-3 py-1 bg-red-800/70 text-red-200 rounded-full text-sm font-bold">
-                    ⚠️ Scam (Confidence {email.cf_conf}%)
-                  </span>
+                  <p className="text-red-400 font-bold">
+                    ⚠️ Scam Detected — Confidence {email.cf_conf}%
+                  </p>
                 )}
               </div>
             ))}
+          </div>
+
+          {/* PAGINATION */}
+          <div className="flex justify-center items-center gap-6 mt-12">
+            <button
+              disabled={page === 1}
+              onClick={() => setPage(page - 1)}
+              className="px-6 py-2 rounded-xl bg-white/10 
+                       border border-white/20 
+                       hover:bg-white/20 transition disabled:opacity-40"
+            >
+              ⬅ Previous
+            </button>
+
+            <span className="text-lg">
+              Page <strong>{page}</strong> / <strong>{totalPages}</strong>
+            </span>
+
+            <button
+              disabled={page === totalPages}
+              onClick={() => setPage(page + 1)}
+              className="px-6 py-2 rounded-xl bg-white/10 
+                       border border-white/20 
+                       hover:bg-white/20 transition disabled:opacity-40"
+            >
+              Next ➡
+            </button>
           </div>
         </div>
       )}
