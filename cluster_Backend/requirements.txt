@@ -1,0 +1,28 @@
+# Core scientific stack
+numpy
+scipy
+pandas
+scikit-learn
+
+# SentenceTransformer embeddings
+sentence-transformers
+torch     # required by sentence-transformers
+
+# Dimensionality reduction + clustering
+umap-learn
+hdbscan
+
+# Cloudflare Worker API calls
+requests
+
+# Language detection
+langdetect
+
+# Domain extraction (for advanced features; already in your pipeline imports)
+tldextract
+
+# Misc utilities
+python-dateutil
+
+# Optional – improves performance
+joblib

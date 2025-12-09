@@ -1,69 +1,99 @@
-# React + TypeScript + Vite
+# 🚀 Scam Email Intelligence Dashboard  
+### *AI-powered clustering, scam detection, and SOC-grade analytics.*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Status](https://img.shields.io/badge/status-active-brightgreen)
+![FastAPI](https://img.shields.io/badge/backend-FastAPI-009688?logo=fastapi)
+![React](https://img.shields.io/badge/frontend-React-61DBFB?logo=react)
+![Cloudflare](https://img.shields.io/badge/LLM-Cloudflare%20Workers%20AI-orange?logo=cloudflare)
+![Clustering](https://img.shields.io/badge/Clustering-UMAP%20%2B%20HDBSCAN-purple)
+[![API Docs](https://img.shields.io/badge/API_DOCS-Available-blue)](https://github.com/CharlieSierra1/mq-apate-2025-team35/blob/varun/cluster_Backend/backend/APIDOC.md)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 📌 Overview
 
-## Expanding the ESLint configuration
+The **Scam Email Intelligence Dashboard** is an end-to-end AI system that:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🔍 1. Clusters emails  
+Using **SentenceTransformer → UMAP → HDBSCAN** for powerful semantic grouping.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🤖 2. Detects scam archetypes  
+Via **Cloudflare Workers AI**, identifying:
+- Financial Fraud  
+- Government / Legal  
+- Extortion / Urgency  
+- Credential Harvesting  
+- Social Engineering  
+- Subscription Scams  
+…and more.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### 🧠 3. SOC-friendly Analyst Dashboard  
+Built with React + Tailwind for:
+- Interactive filtering  
+- Live risk scoring  
+- Pagination  
+- Scam highlighting  
+- Cluster exploration  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# 🛡️ **⚠️ Safety & Ethical Use Notes**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This project processes **email content** and performs automated scam classification.  
+It must be used **responsibly**, especially in enterprise or research contexts.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### ✅ **Intended Use**
+This system is designed for:
+- Cybersecurity research  
+- SOC analyst workflows  
+- Scam prevention and early detection  
+- Educational / academic hackathons  
+- Threat intelligence prototyping  
+
+### ❌ **Not Intended For**
+- Bulk surveillance of private communications  
+- Monitoring individuals without consent  
+- Automated law enforcement decision-making  
+- Blocking legitimate users based solely on the model  
+- Any real-world deployment without human oversight  
+
+### ⚠️ **Model Limitations**
+- Cloudflare AI outputs are **predictions**, not facts  
+- Clustering may group unrelated emails  
+- False positives and false negatives are possible  
+- Outputs should be treated as **supporting intelligence**, not final judgement  
+
+### 👥 **Human-in-the-Loop Required**
+All scam detections must be **reviewed by a human analyst**.  
+The dashboard is meant to **augment**, not replace human decision-making.
+
+### 🔒 **Data Handling & Privacy**
+- No emails are stored on the backend  
+- All processing occurs **locally** in memory per request  
+- Uploads are not logged or saved  
+- No user-identifying data is shared with Cloudflare (only text fields required for analysis)
+
+### 📄 **Compliance**
+While this is a hackathon project, the design aligns with:
+- GDPR guidelines (minimised personal data usage)  
+- CCPA principles (no selling or storing personal info)  
+- CIS Control 13 / SOC processes (Threat Detection)  
+
+A real deployment would require:
+- Data minimisation policies  
+- Security reviews  
+- Signed consent / user agreements  
+- Not sending PII to external LLMs  
+
+---
+
+# 🔗 API Documentation  
+➡ **Full API Spec:**  
+https://github.com/CharlieSierra1/mq-apate-2025-team35/blob/varun/cluster_Backend/backend/APIDOC.md
+
+---
+
+# 🏗️ System Architecture
+
+![Architecture Diagram](./arch.png)
+
