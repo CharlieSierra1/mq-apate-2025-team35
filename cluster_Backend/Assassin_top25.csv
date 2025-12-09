@@ -1,0 +1,562 @@
+sender,receiver,date,subject,body,label,urls
+Robert Elz <kre@munnari.OZ.AU>,Chris Garrigues <cwg-dated-1030377287.06fa6d@DeepEddy.Com>,"Thu, 22 Aug 2002 18:26:25 +0700",Re: New Sequences Window,"Date:        Wed, 21 Aug 2002 10:54:46 -0500     From:        Chris Garrigues      Message-ID:  <1029945287.4797.TMDA@deepeddy.vircio.com>   | I can't reproduce this error. For me it is very repeatable... (like every time, without fail). This is the debug log of the pick happening ... 18:19:03 Pick_It {exec pick +inbox -list -lbrace -lbrace -subject ftp -rbrace -rbrace} {4852-4852 -sequence mercury} 18:19:03 exec pick +inbox -list -lbrace -lbrace -subject ftp -rbrace -rbrace 4852-4852 -sequence mercury 18:19:04 Ftoc_PickMsgs {{1 hit}} 18:19:04 Marking 1 hits 18:19:04 tkerror: syntax error in expression ""int ... Note, if I run the pick command by hand ... delta$ pick +inbox -list -lbrace -lbrace -subject ftp -rbrace -rbrace  4852-4852 -sequence mercury 1 hit That's where the ""1 hit"" comes from (obviously).  The version of nmh I'm using is ... delta$ pick -version pick -- nmh-1.0.4 [compiled on fuchsia.cs.mu.OZ.AU at Sun Mar 17 14:55:56 ICT 2002] And the relevant part of my .mh_profile ... delta$ mhparam pick -seq sel -list Since the pick command works, the sequence (actually, both of them, the one that's explicit on the command line, from the search popup, and the one that comes from .mh_profile) do get created. kre ps: this is still using the version of the code form a day ago, I haven't been able to reach the cvs repository today (local routing issue I think). _______________________________________________ Exmh-workers mailing list Exmh-workers@redhat.com https://listman.redhat.com/mailman/listinfo/exmh-workers",0,1
+Steve Burt <Steve_Burt@cursor-system.com>,"""'zzzzteana@yahoogroups.com'"" <zzzzteana@yahoogroups.com>","Thu, 22 Aug 2002 12:46:18 +0100",[zzzzteana] RE: Alexander,"Martin A posted:
+Tassos Papadopoulos, the Greek sculptor behind the plan, judged that the
+ limestone of Mount Kerdylio, 70 miles east of Salonika and not far from the
+ Mount Athos monastic community, was ideal for the patriotic sculpture. 
+ 
+ As well as Alexander's granite features, 240 ft high and 170 ft wide, a
+ museum, a restored amphitheatre and car park for admiring crowds are
+planned
+---------------------
+So is this mountain limestone or granite?
+If it's limestone, it'll weather pretty fast.
+
+------------------------ Yahoo! Groups Sponsor ---------------------~-->
+4 DVDs Free +s&p Join Now
+http://us.click.yahoo.com/pt6YBB/NXiEAA/mG3HAA/7gSolB/TM
+---------------------------------------------------------------------~->
+
+To unsubscribe from this group, send an email to:
+forteana-unsubscribe@egroups.com
+
+ 
+
+Your use of Yahoo! Groups is subject to http://docs.yahoo.com/info/terms/",0,1
+"""Tim Chapman"" <timc@2ubh.com>",zzzzteana <zzzzteana@yahoogroups.com>,"Thu, 22 Aug 2002 13:52:38 +0100",[zzzzteana] Moscow bomber,"Man Threatens Explosion In Moscow 
+
+Thursday August 22, 2002 1:40 PM
+MOSCOW (AP) - Security officers on Thursday seized an unidentified man who
+said he was armed with explosives and threatened to blow up his truck in
+front of Russia's Federal Security Services headquarters in Moscow, NTV
+television reported.
+The officers seized an automatic rifle the man was carrying, then the man
+got out of the truck and was taken into custody, NTV said. No other details
+were immediately available.
+The man had demanded talks with high government officials, the Interfax and
+ITAR-Tass news agencies said. Ekho Moskvy radio reported that he wanted to
+talk with Russian President Vladimir Putin.
+Police and security forces rushed to the Security Service building, within
+blocks of the Kremlin, Red Square and the Bolshoi Ballet, and surrounded the
+man, who claimed to have one and a half tons of explosives, the news
+agencies said. Negotiations continued for about one and a half hours outside
+the building, ITAR-Tass and Interfax reported, citing witnesses.
+The man later drove away from the building, under police escort, and drove
+to a street near Moscow's Olympic Penta Hotel, where authorities held
+further negotiations with him, the Moscow police press service said. The
+move appeared to be an attempt by security services to get him to a more
+secure location. 
+
+------------------------ Yahoo! Groups Sponsor ---------------------~-->
+4 DVDs Free +s&p Join Now
+http://us.click.yahoo.com/pt6YBB/NXiEAA/mG3HAA/7gSolB/TM
+---------------------------------------------------------------------~->
+
+To unsubscribe from this group, send an email to:
+forteana-unsubscribe@egroups.com
+
+ 
+
+Your use of Yahoo! Groups is subject to http://docs.yahoo.com/info/terms/",0,1
+Monty Solomon <monty@roscom.com>,undisclosed-recipient: ;,"Thu, 22 Aug 2002 09:15:25 -0400",[IRR] Klez: The Virus That  Won't Die,"Klez: The Virus That Won't Die
+ 
+Already the most prolific virus ever, Klez continues to wreak havoc.
+
+Andrew Brandt
+>>From the September 2002 issue of PC World magazine
+Posted Thursday, August 01, 2002
+
+
+The Klez worm is approaching its seventh month of wriggling across 
+the Web, making it one of the most persistent viruses ever. And 
+experts warn that it may be a harbinger of new viruses that use a 
+combination of pernicious approaches to go from PC to PC.
+
+Antivirus software makers Symantec and McAfee both report more than 
+2000 new infections daily, with no sign of letup at press time. The 
+British security firm MessageLabs estimates that 1 in every 300 
+e-mail messages holds a variation of the Klez virus, and says that 
+Klez has already surpassed last summer's SirCam as the most prolific 
+virus ever.
+
+And some newer Klez variants aren't merely nuisances--they can carry 
+other viruses in them that corrupt your data.
+
+...
+
+http://www.pcworld.com/news/article/0,aid,103259,00.asp
+_______________________________________________
+Irregulars mailing list
+Irregulars@tb.tf
+http://tb.tf/mailman/listinfo/irregulars",0,1
+Stewart Smith <Stewart.Smith@ee.ed.ac.uk>,zzzzteana@yahoogroups.com,"Thu, 22 Aug 2002 14:38:22 +0100",Re: [zzzzteana] Nothing like mama used to make,">  in adding cream to spaghetti carbonara, which has the same effect on pasta as
+>  making a pizza a deep-pie; 
+
+I just had to jump in here as Carbonara is one of my favourites to make and ask 
+what the hell are you supposed to use instead of cream?  I've never seen a 
+recipe that hasn't used this.  Personally I use low fat creme fraiche because it 
+works quite nicely but the only time I've seen an supposedly authentic recipe 
+for carbonara  it was identical to mine (cream, eggs and lots of fresh parmesan) 
+except for the creme fraiche.
+
+Stew
+-- 
+Stewart Smith
+Scottish Microelectronics Centre, University of Edinburgh.
+http://www.ee.ed.ac.uk/~sxs/
+
+
+------------------------ Yahoo! Groups Sponsor ---------------------~-->
+4 DVDs Free +s&p Join Now
+http://us.click.yahoo.com/pt6YBB/NXiEAA/mG3HAA/7gSolB/TM
+---------------------------------------------------------------------~->
+
+To unsubscribe from this group, send an email to:
+forteana-unsubscribe@egroups.com
+
+ 
+
+Your use of Yahoo! Groups is subject to http://docs.yahoo.com/info/terms/",0,1
+"""Martin Adamson"" <martin@srv0.ems.ed.ac.uk>",zzzzteana@yahoogroups.com,"Thu, 22 Aug 2002 14:50:31 +0100",Re: [zzzzteana] Nothing like mama used to make,"> I just had to jump in here as Carbonara is one of my favourites to make and 
+> ask 
+> what the hell are you supposed to use instead of cream? 
+
+Isn't it just basically a mixture of beaten egg and bacon (or pancetta, 
+really)? You mix in the raw egg to the cooked pasta and the heat of the pasta 
+cooks the egg. That's my understanding.
+
+Martin
+
+------------------------ Yahoo! Groups Sponsor ---------------------~-->
+4 DVDs Free +s&p Join Now
+http://us.click.yahoo.com/pt6YBB/NXiEAA/mG3HAA/7gSolB/TM
+---------------------------------------------------------------------~->
+
+To unsubscribe from this group, send an email to:
+forteana-unsubscribe@egroups.com
+
+ 
+
+Your use of Yahoo! Groups is subject to http://docs.yahoo.com/info/terms/",0,1
+"""Martin Adamson"" <martin@srv0.ems.ed.ac.uk>",zzzzteana@yahoogroups.com,"Thu, 22 Aug 2002 14:54:25 +0100",[zzzzteana] Playboy wants to go out with a bang,"The Scotsman - 22 August 2002
+
+ Playboy wants to go out with a bang 
+ 
+ 
+ AN AGEING Berlin playboy has come up with an unusual offer to lure women into
+ his bed - by promising the last woman he sleeps with an inheritance of 250,000
+ (160,000). 
+ 
+ Rolf Eden, 72, a Berlin disco owner famous for his countless sex partners,
+ said he could imagine no better way to die than in the arms of an attractive
+ young woman - preferably under 30. 
+ 
+ ""I put it all in my last will and testament - the last woman who sleeps with
+ me gets all the money,"" Mr Eden told Bild newspaper. 
+ 
+ ""I want to pass away in the most beautiful moment of my life. First a lot of
+ fun with a beautiful woman, then wild sex, a final orgasm - and it will all
+ end with a heart attack and then Im gone."" 
+ 
+ Mr Eden, who is selling his nightclub this year, said applications should be
+ sent in quickly because of his age. ""It could end very soon,"" he said.
+
+
+------------------------ Yahoo! Groups Sponsor ---------------------~-->
+4 DVDs Free +s&p Join Now
+http://us.click.yahoo.com/pt6YBB/NXiEAA/mG3HAA/7gSolB/TM
+---------------------------------------------------------------------~->
+
+To unsubscribe from this group, send an email to:
+forteana-unsubscribe@egroups.com
+
+ 
+
+Your use of Yahoo! Groups is subject to http://docs.yahoo.com/info/terms/",0,1
+Stewart Smith <Stewart.Smith@ee.ed.ac.uk>,zzzzteana@yahoogroups.com,"Thu, 22 Aug 2002 15:01:20 +0100",Re: [zzzzteana] Nothing like mama used to make,"Martin Adamson wrote: >  > Isn't it just basically a mixture of beaten egg and bacon (or pancetta,  > really)? You mix in the raw egg to the cooked pasta and the heat of the pasta  > cooks the egg. That's my understanding. >  You're probably right, mine's just the same but with the cream added to the  eggs.  I guess I should try it without.  Actually looking on the internet for a  recipe I found this one from possibly one of the scariest people I've ever seen,  and he's a US Congressman: That's one of the worst non-smiles ever. Stew ps. Apologies if any of the list's Maine residents voted for this man, you won't  do it again once you've seen this pic. --  Stewart Smith Scottish Microelectronics Centre, University of Edinburgh. http://www.ee.ed.ac.uk/~sxs/ ------------------------ Yahoo! Groups Sponsor ---------------------~--> 4 DVDs Free +s&p Join Now http://us.click.yahoo.com/pt6YBB/NXiEAA/mG3HAA/7gSolB/TM ---------------------------------------------------------------------~-> To unsubscribe from this group, send an email to: forteana-unsubscribe@egroups.com   Your use of Yahoo! Groups is subject to http://docs.yahoo.com/info/terms/",0,1
+"""Martin Adamson"" <martin@srv0.ems.ed.ac.uk>",zzzzteana@yahoogroups.com,"Thu, 22 Aug 2002 15:01:33 +0100",[zzzzteana] Meaningful sentences,"The Scotsman
+
+ Thu 22 Aug 2002 
+
+ Meaningful sentences 
+ 
+ Tracey Lawson 
+ 
+ 
+ If you ever wanted to look like ""one of the most dangerous inmates in prison
+ history"", as one judge described Charles Bronson, nows your chance. Bronson -
+ the serial hostage taker, not the movie star - has written a health and
+ fitness guide in which he shares some of the secrets behind his legendary
+ muscle power. 
+ 
+ Solitary Fitness - a title which bears testament to the fact that Bronson, 48,
+ has spent 24 of his 28 prison years in solitary confinement - explains how he
+ has turned himself into a lean, mean, fitness machine while living 23 hours a
+ day in a space just 12 feet by eight feet, on a diet of scrubs grub and at
+ virtually no cost. 
+ 
+ The book is aimed at those who want to get fabulously fit without spending a
+ fortune on gym memberships, protein supplements or designer trainers, and
+ starts with a fierce attack on some of the expensive myths churned out by the
+ exercise industry. 
+ 
+ ""I pick up a fitness mag, I start to laugh and I wipe my arse with it,"" is the
+ opening paragraph penned by Bronson. ""Its a joke and a big con and they call
+ me a criminal!"" You cant help feeling he has a point. 
+ 
+ This is not the first book that Bronson has written from behind bars, having
+ already published Birdman Opens His Mind, which features drawings and poems
+ created by Bronson while in prison. And he is not the first prisoner to
+ discover creative expression while residing at Her Majestys pleasure. 
+ 
+ Jimmy Boyle, the Scots sculptor and novelist, discovered his artistic talents
+ when he was sent to Barlinnie Prisons famous special unit, which aimed to
+ help inmates put their violent pasts behind them by teaching them how to
+ express their emotions artistically. Boyle was sentenced to life for the
+ murder of ""Babs"" Rooney in 1967. Once released, he moved to Edinburgh where he
+ has become a respected artist. His first novel, Hero of the Underworld, was
+ published in 1999 and his autobiography, A Sense of Freedom, was made into an
+ award-winning film. 
+ 
+ Hugh Collins was jailed for life in 1977 for the murder of William Mooney in
+ Glasgow, and in his first year in Barlinnie prison stabbed three prison
+ officers, earning him an extra seven-year sentence. But, after being
+ transferred to the same unit that Boyle attended, he learned to sculpt and
+ developed an interest in art. He later published Autobiography of a Murderer,
+ a frank account of Glasgows criminal culture in the 1960s, which received
+ critical praise. 
+ 
+ And Lord Archer doesnt seem to have had trouble continuing to write the books
+ that have made him millions while in jail. He recently signed a three-book
+ deal with Macmillan publishers worth a reported 10 million, and is no doubt
+ scribbling away as we speak. 
+ 
+ So why is it that men like Collins, Bronson and Boyle, who can be so
+ destructive towards society on the outside, can become so creative once stuck
+ on the inside? Steve Richards, Bronsons publisher, has published many books
+ about criminal figures and believes the roots of this phenomenon are both
+ pragmatic and profound. 
+ 
+ He says: ""Prison is sometimes the first time some criminals will ever have
+ known a stable environment, and this can be the first time they have the
+ chance to focus on their creative skills. 
+ 
+ ""It may also be the first time that they have really had the chance of an
+ education, if their early years have been hard. It could be the first time
+ anyone has offered them the chance to explore their creative talents."" 
+ 
+ However, Richards believes the reasons are also deeper than that. He says:
+ ""Once they are behind bars, the cold light of day hits them, and they examine
+ the very essence of who they are. 
+ 
+ ""They ask themselves, am I a man who wants to be remembered for violence? Or
+ am I a man who can contribute to society, who can be remembered for something
+ good?"" 
+ 
+ Bronson - who was born Michael Gordon Peterson, but changed his name to that
+ of the Hollywood star of the Death Wish films - has, so far, been remembered
+ mainly for things bad. He was originally jailed for seven years for armed
+ robbery in 1974, and has had a series of sentences added to his original term
+ over the years as a result of attacking people in prison. In 2000 he was
+ jailed for life after being convicted of holding a teacher hostage for nearly
+ two days during a jail siege. 
+ 
+ Standing five feet ten and a half inches tall and weighing 210lbs, he is
+ renowned for his strength. He has bent metal cell doors with his bare hands
+ and does up to 3,000 - yes, 3,000 - press-ups a day. As he puts it: ""I can hit
+ a man 20 times in four seconds, I can push 132 press ups in 60 seconds."" 
+ 
+ But judging by our current obsession with health and exercise, Solitary
+ Fitness might be the book which will see Bronsons face sitting on every
+ coffee table in the land. He might be the man to give us the dream body which
+ so many so-called fitness gurus promise but fail to motivate us into. Because
+ Bronson has learned to use words as powerfully as he can use his fists. 
+ 
+ ""All this crap about high-protein drinks, pills, diets, its just a load of
+ bollocks and a multi-million-pound racket,"" he writes, in what can only be
+ described as a refreshingly honest style. ""We can all be fat lazy bastards,
+ its our choice, Im sick of hearing and reading about excuses, if you stuff
+ your face with shit you become shit, thats logical to me."" 
+ 
+ As motivational mantras go, that might be just the kick up the, er, backside
+ we all needed. 
+ 
+ 
+ Solitary Fitness by Charles Bronson is published by Mirage Publishing and will
+ be available in bookstores from October at 7.99
+
+
+------------------------ Yahoo! Groups Sponsor ---------------------~-->
+4 DVDs Free +s&p Join Now
+http://us.click.yahoo.com/pt6YBB/NXiEAA/mG3HAA/7gSolB/TM
+---------------------------------------------------------------------~->
+
+To unsubscribe from this group, send an email to:
+forteana-unsubscribe@egroups.com
+
+ 
+
+Your use of Yahoo! Groups is subject to http://docs.yahoo.com/info/terms/",0,1
+"""NOI Administrator"" <admin@networksonline.com>",<spamassassin-talk@example.sourceforge.net>,"Thu, 22 Aug 2002 10:16:36 -0400",[SAtalk] SA CGI Configurator Scripts,"I have been trying to research via SA mirrors and search engines if a canned
+script exists giving clients access to their user_prefs options via a
+web-based CGI interface. Numerous ISPs provide this feature to clients, but
+so far I can find nothing. Our configuration uses Amavis-Postfix and ClamAV
+for virus filtering and Procmail with SpamAssassin for spam filtering. I
+would prefer not to have to write a script myself, but will appreciate any
+suggestions.
+
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: OSDN - Tired of that same old
+cell phone?  Get a new here for FREE!
+https://www.inphonic.com/r.asp?r=sourceforge1&refcode1=vs3390
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk",0,1
+David H=?ISO-8859-1?B?9g==?=hn <dh@uptime.at>,<spamassassin-devel@example.sourceforge.net>,"Thu, 22 Aug 2002 16:19:48 +0200",[SAdev] Interesting approach to Spam handling..,"Hello, have you seen and discussed this article and his approach?
+
+Thank you
+
+http://www.paulgraham.com/spam.html
+-- ""Hell, there are no rules here-- we're trying to accomplish something.""
+-- Thomas Alva Edison
+
+
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: OSDN - Tired of that same old
+cell phone?  Get a new here for FREE!
+https://www.inphonic.com/r.asp?r=sourceforge1&refcode1=vs3390
+_______________________________________________
+Spamassassin-devel mailing list
+Spamassassin-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-devel",0,1
+Marc Perkel <marc@perkel.com>,Theo Van Dinter <felicity@kluge.net>,"Thu, 22 Aug 2002 08:14:12 -0700",Re: [SAdev] Live Rule Updates after Release ???,"Yes - great minds think alike. But even withput eval rules it would be very 
+useful. It would allow us to respond quickly to spammer's tricks.
+
+Theo Van Dinter wrote:
+> On Thu, Aug 22, 2002 at 07:27:52AM -0700, Marc Perkel wrote:
+> 
+>>Has anyone though of the idea of live updates of rules after release? The 
+>>idea being that the user can run a cron job once a week or so and get the 
+>>new default rule set. This would allow us to react faster to:
+> 
+> 
+> I suggested this a few months ago.  I don't remember the details of what
+> came out of it except that it would only be useful for non-eval rules
+> since those require code changes.
+> 
+
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: OSDN - Tired of that same old
+cell phone?  Get a new here for FREE!
+https://www.inphonic.com/r.asp?r=sourceforge1&refcode1=vs3390
+_______________________________________________
+Spamassassin-devel mailing list
+Spamassassin-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-devel",0,1
+"""John P. Looney"" <valen@tuatha.org>",linux-raid@vger.kernel.org,"Thu, 22 Aug 2002 16:25:45 +0100",[ILUG] Re: Problems with RAID1 on cobalt raq3,"On Mon, Aug 19, 2002 at 03:08:16PM +0100, John P. Looney mentioned:
+>  This is likely because to get it to boot, like the cobalt, I'm actually
+> passing root=/dev/hda5 to the kernel, not /dev/md0. 
+
+ Just to solve this...the reason I was booting the box with
+root=/dev/hda5, not /dev/md0 was because /dev/md0 wasn't booting - it
+would barf with 'can't find init'.
+
+ It turns out that this is because I was populating md0 with tar. Which
+seems to have 'issues' with crosslinked files - for instance, it was
+trying to make a hard link of glibc.so to hda - and failing. It was only
+as I did it again with a friend present, that he spotted the errors, and
+queried them. We noticed that the hard linked files just didn't exist on
+the new rootfs.
+
+ When we duplicated the filesystems with dump instead of tar, it worked
+fine, I was able to tell lilo to use root=/dev/md0 and everything worked.
+
+ Woohoo.
+
+Kate
+
+
+-- 
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie",0,1
+Chris Garrigues <cwg-exmh@DeepEddy.Com>,"Robert Elz <kre@munnari.OZ.AU>, exmh-workers@spamassassin.taint.org","Thu, 22 Aug 2002 10:25:52 -0500",Re: New Sequences Window,"--==_Exmh_-1317289252P Content-Type: text/plain; charset=us-ascii > From:  Chris Garrigues  > Date:  Wed, 21 Aug 2002 10:40:39 -0500 > > > From:  Chris Garrigues  > > Date:  Wed, 21 Aug 2002 10:17:45 -0500 > > > > Ouch...I'll get right on it. > >  > > > From:  Robert Elz  > > > Date:  Wed, 21 Aug 2002 19:30:01 +0700 > > > > > > Any chance of having that lengthen instead?   I like all my exmh stuff > > > in nice columns (fits the display better).   That is, I use the detache > d > > > folder list, one column.   The main exmh window takes up full screen, > > > top to bottom, but less than half the width, etc... >  > I thought about that.  The first order approximation would be to just add  > using pack .... -side top instead of pack ... -side left, however, since their  > each a different width, it would look funny. I've done this.  It's not as pretty as I think it should be, but it works.   I'm going to leave the cosmetic issues to others.  When I update the  documentation, I'll add this to the exmh.TODO file. I'm leaving for a 2 1/2 week vacation in a week, so this is the last new  functionality I'm going to add for a while.  Also, I now have pretty much  everything in there that I want for my own use, so I'm probably pretty much  done.  I'll work on bug fixes and documentation before my vacation, and  hopefully do nothing more afterwards. Chris --  Chris Garrigues                 http://www.DeepEddy.Com/~cwg/ virCIO                          http://www.virCIO.Com 716 Congress, Suite 200 Austin, TX  78701		+1 512 374 0500   World War III:  The Wrong-Doers Vs. the Evil-Doers. --==_Exmh_-1317289252P Content-Type: application/pgp-signature -----BEGIN PGP SIGNATURE----- Version: GnuPG v1.0.6 (GNU/Linux) Comment: Exmh version 2.2_20000822 06/23/2000 iD8DBQE9ZQJ/K9b4h5R0IUIRAiPuAJwL4mUus5whLNQZC8MsDlGpEdKNrACcDfZH PcGgN9frLIM+C5Z3vagi2wE= =qJoJ -----END PGP SIGNATURE----- --==_Exmh_-1317289252P-- _______________________________________________ Exmh-workers mailing list Exmh-workers@redhat.com https://listman.redhat.com/mailman/listinfo/exmh-workers",0,1
+Owen Byrne <owen@permafrost.net>,fork@spamassassin.taint.org,"Thu, 22 Aug 2002 12:39:47 -0300",The case for spam,"SpamAssassin is hurting democracy!
+Owen
+---------------------------------------------------------------------------------------------------------------------
+
+http://www.bayarea.com/mld/mercurynews/news/opinion/3900215.htm
+
+Internet can level the political playing field
+By Mike McCurry and Larry Purpuro
+
+NOT many months from now, people across the country will experience one 
+of the great recurring features of American democracy. At shopping 
+malls, on factory floors, at church socials and even on our front 
+stoops, we will be approached by individuals who want to represent us in 
+public office. While chances are high that we won't know them 
+personally, they will walk up to us, offer a handshake and a flier and 
+ask for our votes.
+
+Just as technology is affecting every other area of communication, it 
+has begun to affect the way political candidates communicate with voters.
+
+In this year's GOP gubernatorial primary, California Secretary of State 
+Bill Jones, who faced better-funded candidates, acquired the e-mail 
+addresses of more than a million potential California voters and sent 
+each an unsolicited e-mail asking for support.
+
+That day, he might have chosen any of the more traditional -- and more 
+expensive -- methods of contacting voters, such as direct mail, radio 
+spots or TV ads. But he spent only about 2 cents per message, instead of 
+35 cents or more per message for direct mail or in another medium.
+
+Had Jones chosen direct mail, radio or TV, that communication would have 
+been equally ``unsolicited,'' as defined in the e-mail world. Few voters 
+would have ``opted in'' to receive campaign information from Jones 
+through any of those channels.
+
+The response to Jones' e-mail effort, however, was swift and intense. He 
+was lambasted by anti-spam advocates, and media coverage was almost 
+entirely negative. To be fair, some of Jones' tactics could have been 
+refined. He used a less-than-perfect list and no standard-practice 
+``paid for'' disclaimer in the message.
+
+His detractors, however, attacked him not for his tactical miscues but 
+because the e-mail was sent unsolicited. In fact, Jones' online campaign 
+may have been his most visible asset. In an era of cynicism toward money 
+in politics -- money typically spent on other unsolicited communication 
+mediums -- Jones tried to level the playing field.
+
+No one likes commercial spam. It is irrelevant and untargeted and can be 
+highly intrusive and even offensive. But as a sophisticated society, 
+it's time to differentiate commercial spam from very different 
+unsolicited e-mail sent by political candidates to voters.
+
+The debate is particularly relevant in light of legislation in Congress 
+that would constitute the first federal law to directly address spam. We 
+believe e-mail is no more intrusive than direct mail, telemarketing or 
+TV advertising when it comes to politicians seeking to reach voters. A 
+simple link in good e-mail campaigns allows recipients to opt out of 
+future mailings. Direct mail takes at least a phone call or stamp to be 
+taken off a list, and viewers must repeatedly endure TV ads.
+
+When a candidate lacks a large campaign war chest, he or she can use the 
+Internet to provide constituents with information to better prepare them 
+to perform their civic duty of casting educated votes. With more than 60 
+percent of all potential voters in this country possessing e-mail 
+accounts, it makes sense that political candidates use this medium.
+
+Candidates might avoid some of the tactical problems encountered by the 
+Jones campaign if they use the technologies available today that better 
+ensure quality of e-mail lists and target content to specific recipient 
+groups.
+
+But the broader point remains. When a political candidate sends a voter 
+an e-mail, that recipient can choose to delete the message without 
+opening it, unsubscribe from the list, read it or even reply and engage 
+the sender. That choice should belong to the voter -- not to anti-spam 
+advocates whose efforts are better focused on commercial e-mail. 
+Political candidates should be free to communicate with voters as best 
+they can, and let voters decide what to do with that information.
+
+
+--------------------------------------------------------------------------------
+Mike McCurry, former press secretary for President Clinton, is CEO of an 
+advocacy management and communications software company. Larry Purpuro, 
+the former Republican National Committee deputy chief of staff, is 
+founder and president of a political e-marketing firm. This was written 
+for the Los Angeles Times. 
+
+http://xent.com/mailman/listinfo/fork",0,1
+Bernard Michael Tyers <bernard.tyers@dcu.ie>,iiu <iiu@taint.org>,"Thu, 22 Aug 2002 16:58:37 +0100",[IIU] Eircom aDSL Nat'ing,"Hi all,
+
+apologies for the possible silly question (i don't think it is, but), 
+but is Eircom's aDSL service NAT'ed?
+
+and what implications would that have for VoIP? I know there are 
+difficulties with VoIP or connecting to clients connected to a NAT'ed 
+network from the internet wild (i.e. machines with static, real IPs)
+
+any help pointers would be helpful,
+
+cheers
+-- 
+rgrds,
+Bernard
+-- 
+Bernard Tyers * National Centre for Sensor Research * P:353-1-700-5273 *
+E: bernard.tyers@dcu.ie * W: www.physics.dcu.ie/~bty * L:N117
+
+_______________________________________________
+IIU mailing list
+IIU@iiu.taint.org
+http://iiu.taint.org/mailman/listinfo/iiu",0,1
+"""uncle_slacky"" <robert.chambers@baesystems.com>",zzzzteana@yahoogroups.com,"Thu, 22 Aug 2002 16:11:27 -0000",[zzzzteana] Re: Australian Catholic Kiddie Perv Steps Aside,"--- In forteana@y..., ""D.McMann""  wrote: > Robert Moaby, 33, who sent death threats to staff, was also jailed > for hoarding indecent pictures of children on his home computer. > ========= >  > Hmm, if I didn't trust our government and secret police, I could  look at > this another way.... There is a bit of circumstantial evidence - apparently some MT  listers were approached by him (via email) - a little research in  dejanews/google groups showed a number of messages from him, clearly  hoping to contact girls, appearing in ""alt.teens"" and similar groups -  I just tried a Google Groups search on ""Robert Moaby"" and some of  them came top of the list. Note for Marie - ""MT"" stands for Mark Thomas, a slightly slimmer, UK  version of your Michael Moore - the mailing list is named after him.  Rob ------------------------ Yahoo! Groups Sponsor ---------------------~--> 4 DVDs Free +s&p Join Now http://us.click.yahoo.com/pt6YBB/NXiEAA/mG3HAA/7gSolB/TM ---------------------------------------------------------------------~-> To unsubscribe from this group, send an email to: forteana-unsubscribe@egroups.com   Your use of Yahoo! Groups is subject to http://docs.yahoo.com/info/terms/",0,1
+"""Fergal Moran"" <fergal.moran@wasptech.com>","""Kiall Mac Innes"" <kiall@redpie.com>, ""ILUG"" <ilug@linux.ie>","Thu, 22 Aug 2002 17:13:01 +0100",RE: [ILUG] Sun Solaris..,"In a nutshell - Solaris is Suns own flavour of UNIX.
+
+> -----Original Message-----
+> From: Kiall Mac Innes [mailto:kiall@redpie.com] 
+> Sent: 22 August 2002 17:23
+> To: ILUG
+> Subject: [ILUG] Sun Solaris..
+> 
+> 
+> Can someone explain what type of operating system Solaris 
+> is... as ive never seen or used it i dont know wheather to 
+> get a server from Sun or from DELL i would prefer a linux 
+> based server and Sun seems to be the one for that but im not 
+> sure if Solaris is a distro of linux or a completely 
+> different operating system? can someone explain...
+> 
+> Kiall Mac Innes
+> 
+> 
+> -- 
+> Irish Linux Users' Group: ilug@linux.ie 
+> http://www.linux.ie/mailman/listinfo/ilug for 
+> (un)subscription information. List maintainer: listmaster@linux.ie
+> 
+
+-- 
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie",0,1
+"""uncle_slacky"" <robert.chambers@baesystems.com>",zzzzteana@yahoogroups.com,"Thu, 22 Aug 2002 16:17:39 -0000",[zzzzteana] Which Muppet Are You?,"Apols if this has been posted before:
+
+http://www.pinkpaperclips.net/subs/quiz2.html
+
+Rob
+
+
+------------------------ Yahoo! Groups Sponsor ---------------------~-->
+4 DVDs Free +s&p Join Now
+http://us.click.yahoo.com/pt6YBB/NXiEAA/mG3HAA/7gSolB/TM
+---------------------------------------------------------------------~->
+
+To unsubscribe from this group, send an email to:
+forteana-unsubscribe@egroups.com
+
+ 
+
+Your use of Yahoo! Groups is subject to http://docs.yahoo.com/info/terms/",0,1
+"""Kiall Mac Innes"" <kiall@redpie.com>","""ILUG"" <ilug@linux.ie>","Thu, 22 Aug 2002 17:23:15 +0100",[ILUG] Sun Solaris..,"Can someone explain what type of operating system Solaris is... as ive never
+seen or used it i dont know wheather to get a server from Sun or from DELL i
+would prefer a linux based server and Sun seems to be the one for that but
+im not sure if Solaris is a distro of linux or a completely different
+operating system? can someone explain...
+
+Kiall Mac Innes
+
+
+-- 
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie",0,1
