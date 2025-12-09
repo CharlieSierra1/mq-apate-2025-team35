@@ -37,6 +37,32 @@ Built with React + Tailwind for:
 
 ---
 
+# 📚 Dataset Description
+
+The dataset consists of **public mailing list archives** from groups like Yahoo! Groups, Forteana, and Linux user discussions. These historical messages include both legitimate conversations and early spam-like content. (https://figshare.com/articles/dataset/Seven_Phishing_Email_Datasets/25432108)
+
+### 📦 Fields
+| Field | Description |
+|-------|-------------|
+| sender | Email address of sender |
+| receiver | Recipient(s) |
+| date | Email timestamp |
+| subject | Subject line |
+| body | Email content |
+| label | 0 = ham, 1 = spam (historic annotation) |
+| urls | Number of URLs found in the body |
+
+### 📨 Example Emails
+- **Technical debugging emails** (pure ham)  
+- **Discussion threads with footer ads**  
+- **News forwards with mailing list unsubscribe sections**  
+- **Early ad-like or sensational emails**
+
+This makes the dataset ideal for clustering and scam classification experiments.
+
+
+---
+
 # 🛡️ **⚠️ Safety & Ethical Use Notes**
 
 This project processes **email content** and performs automated scam classification.  
