@@ -11,15 +11,18 @@ export default function App() {
   const [results, setResults] = useState<any[] | null>(null);
   const [meta, setMeta] = useState<any | null>(null);
 
-  // === Filters ===
+  // Filters
   const [filterCluster, setFilterCluster] = useState<string>("all");
   const [filterArchetype, setFilterArchetype] = useState<string>("all");
   const [showScamsOnly, setShowScamsOnly] = useState<boolean>(false);
   const [riskLimit, setRiskLimit] = useState<number>(100);
 
-  // === PAGINATION ===
+  // Pagination
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(12);
+
+  // Modal
+  const [selectedEmail, setSelectedEmail] = useState<any | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFiles(e.target.files);
@@ -57,8 +60,7 @@ export default function App() {
       setResults(json.data);
       setStatus("done");
       setMessage("🎉 Processing complete!");
-
-      setPage(1); // reset page
+      setPage(1);
     } catch (err: any) {
       console.error(err);
       setStatus("error");
@@ -66,7 +68,7 @@ export default function App() {
     }
   };
 
-  // === FILTERED RESULTS ===
+  // Filtered data
   const filtered = useMemo(() => {
     if (!results) return [];
     return results.filter((email) => {
@@ -80,7 +82,7 @@ export default function App() {
     });
   }, [results, filterCluster, filterArchetype, showScamsOnly, riskLimit]);
 
-  // === PAGINATION SLICE ===
+  // Pagination logic
   const totalPages = Math.ceil(filtered.length / pageSize);
   const pageData = filtered.slice((page - 1) * pageSize, page * pageSize);
 
@@ -266,11 +268,11 @@ export default function App() {
             {pageData.map((email) => (
               <div
                 key={email.id}
-                className="bg-white/10 backdrop-blur-xl border border-white/10
+                onClick={() => setSelectedEmail(email)}
+                className="cursor-pointer bg-white/10 backdrop-blur-xl border border-white/10
                         p-6 rounded-2xl shadow-lg hover:shadow-purple-500/50
                         hover:-translate-y-1 transition"
               >
-                {/* Header */}
                 <div className="flex justify-between mb-4">
                   <span
                     className="px-3 py-1 rounded-lg text-sm font-bold
@@ -281,34 +283,30 @@ export default function App() {
 
                   <span
                     className={`px-3 py-1 rounded-lg text-sm font-bold shadow 
-                  ${
-                    email.cf_risk > 70
-                      ? "bg-red-600"
-                      : email.cf_risk > 40
-                      ? "bg-yellow-600"
-                      : "bg-green-600"
-                  }`}
+                      ${
+                        email.cf_risk > 70
+                          ? "bg-red-600"
+                          : email.cf_risk > 40
+                          ? "bg-yellow-600"
+                          : "bg-green-600"
+                      }`}
                   >
                     Risk {email.cf_risk}
                   </span>
                 </div>
 
-                {/* Subject */}
-                <h3 className="text-xl font-bold mb-2">
+                <h3 className="text-xl font-bold mb-2 truncate">
                   {email.subject || "(No Subject)"}
                 </h3>
 
-                {/* Archetype */}
                 <p className="text-sm text-purple-300 mb-3">
                   🧠 <strong>{email.cf_archetype}</strong>
                 </p>
 
-                {/* Body Preview */}
-                <p className="text-gray-300 text-sm mb-4">
-                  {(email.body || "").slice(0, 200)}…
+                <p className="text-gray-300 text-sm mb-4 line-clamp-4">
+                  {(email.body || "").slice(0, 300)}…
                 </p>
 
-                {/* Scam Label */}
                 {email.cf_is_scam && (
                   <p className="text-red-400 font-bold">
                     ⚠️ Scam Detected — Confidence {email.cf_conf}%
@@ -324,8 +322,8 @@ export default function App() {
               disabled={page === 1}
               onClick={() => setPage(page - 1)}
               className="px-6 py-2 rounded-xl bg-white/10 
-                       border border-white/20 
-                       hover:bg-white/20 transition disabled:opacity-40"
+                        border border-white/20 
+                        hover:bg-white/20 transition disabled:opacity-40"
             >
               ⬅ Previous
             </button>
@@ -338,10 +336,72 @@ export default function App() {
               disabled={page === totalPages}
               onClick={() => setPage(page + 1)}
               className="px-6 py-2 rounded-xl bg-white/10 
-                       border border-white/20 
-                       hover:bg-white/20 transition disabled:opacity-40"
+                        border border-white/20 
+                        hover:bg-white/20 transition disabled:opacity-40"
             >
               Next ➡
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL - FULL EMAIL DETAILS */}
+      {selectedEmail && (
+        <div
+          className="fixed inset-0 bg-black/70 backdrop-blur-xl flex justify-center items-center z-50 p-6"
+          onClick={() => setSelectedEmail(null)}
+        >
+          <div
+            className="bg-white/10 border border-white/20 p-8 rounded-2xl 
+            max-w-3xl w-full shadow-2xl overflow-y-auto max-h-[85vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-3xl font-bold mb-4">{selectedEmail.subject}</h2>
+
+            <div className="flex flex-wrap gap-3 mb-6">
+              <span className="px-3 py-1 rounded bg-blue-600 text-sm">
+                Cluster {selectedEmail.cluster}
+              </span>
+              <span
+                className={`px-3 py-1 rounded text-sm font-bold ${
+                  selectedEmail.cf_risk > 70
+                    ? "bg-red-600"
+                    : selectedEmail.cf_risk > 40
+                    ? "bg-yellow-600"
+                    : "bg-green-600"
+                }`}
+              >
+                Risk {selectedEmail.cf_risk}
+              </span>
+              <span className="px-3 py-1 rounded bg-purple-600 text-sm">
+                {selectedEmail.cf_archetype}
+              </span>
+            </div>
+
+            {selectedEmail.cf_is_scam && (
+              <p className="text-red-400 font-bold text-lg mb-4">
+                ⚠️ Scam Detected — Confidence {selectedEmail.cf_conf}%
+              </p>
+            )}
+
+            <p className="text-gray-300 mb-2">
+              <strong>Sender:</strong> {selectedEmail.sender}
+            </p>
+            <p className="text-gray-300 mb-4">
+              <strong>Receiver:</strong> {selectedEmail.receiver}
+            </p>
+
+            <div className="bg-black/20 border border-white/10 p-4 rounded-xl max-h-[50vh] overflow-y-auto">
+              <pre className="whitespace-pre-wrap text-gray-200 text-sm">
+                {selectedEmail.body}
+              </pre>
+            </div>
+
+            <button
+              className="mt-6 w-full py-3 rounded-xl bg-red-600 hover:bg-red-500 font-bold"
+              onClick={() => setSelectedEmail(null)}
+            >
+              Close
             </button>
           </div>
         </div>
