@@ -1,69 +1,39 @@
-# React + TypeScript + Vite
+# 🚀 Scam Email Intelligence Dashboard  
+### *AI-powered clustering, scam detection, and SOC-grade analytics.*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Status](https://img.shields.io/badge/status-active-brightgreen)
+![FastAPI](https://img.shields.io/badge/backend-FastAPI-009688?logo=fastapi)
+![React](https://img.shields.io/badge/frontend-React-61DBFB?logo=react)
+![Cloudflare](https://img.shields.io/badge/LLM-Cloudflare%20Workers%20AI-orange?logo=cloudflare)
+![Clustering](https://img.shields.io/badge/Clustering-UMAP%20%2B%20HDBSCAN-purple)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 📌 Overview
 
-## Expanding the ESLint configuration
+The **Scam Email Intelligence Dashboard** is an end-to-end AI system that:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🔍 **1. Clusters emails automatically**  
+Using **SentenceTransformer → UMAP → HDBSCAN**, the system groups similar emails into clusters based on semantic similarity.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🤖 **2. Detects scam archetypes using Cloudflare Workers AI**  
+Each email is classified into patterns such as *Financial Scam, Government Scam, Tax Fraud, Legal Threat*, etc.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### 🧠 **3. Provides a SOC-style Analyst Dashboard**  
+With filters, risk scoring, pagination, and cluster insights — analysts can rapidly inspect suspicious messages.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 📊 **4. Displays risk scores, archetypes & scam confidence**  
+Every email is enriched with metadata such as:  
+- risk score  
+- scam / not scam  
+- confidence (%)  
+- archetype label  
+- cluster ID  
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This project is built for **hackathons, security teams, AI learning, and fraud-detection demos**.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# 🖼️ UI Preview
+
+> *(Insert screenshots here)*  
